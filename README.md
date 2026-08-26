@@ -183,34 +183,6 @@ Building production-grade AI systems and applications as a Computer Science stud
 
 ---
 
-<h2 align="center">GitHub Trophies</h2>
-
-<div align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=palturuvenubhaskar&theme=radical&no-frame=true&no-bg=true&margin-w=4&column=7" />
-</div>
-
----
-
-<h2 align="center">Contribution Activity</h2>
-
-<div align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=palturuvenubhaskar&theme=midnight-purple&hide_border=true&area=true" />
-</div>
-
----
-
-<h2 align="center">Contribution Snake</h2>
-
-<div align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/palturuvenubhaskar/palturuvenubhaskar/output/github-contribution-grid-snake-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/palturuvenubhaskar/palturuvenubhaskar/output/github-contribution-grid-snake.svg">
-    <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/palturuvenubhaskar/palturuvenubhaskar/output/github-contribution-grid-snake.svg">
-  </picture>
-</div>
-
----
-
 <h2 align="center">Current Focus</h2>
 
 <div align="center">
