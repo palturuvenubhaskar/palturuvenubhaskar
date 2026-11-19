@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+shots/
+tmp_*.py
+repos.json
+user.json
+contrib.html
+preview.html
+shoot.ps1
+ref/
+ref_tree.json
+
+# full fonts are downloaded + subset by the workflow; only subsets are kept
+fonts/*.woff2
+!fonts/sub-*.woff2
