@@ -28,7 +28,7 @@
 .sh{animation:sheen 5s ease-in-out infinite}
 .rg{opacity:0;transform-box:fill-box;transform-origin:center;animation:ring 1s ease-out both}
 @media (prefers-reduced-motion: reduce){.r,.f,.g,.p,.live,.n,.nu,.tw,.ti,.sl,.ai,.ro,.rg{animation:none!important;opacity:1!important;transform:none!important}.sh,.rg{display:none}}
-.r,.f,.g,.p,.live,.n,.nu,.tw,.ti,.sl,.ai,.ro{animation:none!important;opacity:1!important;transform:none!important}.sh,.rg{display:none}</style><g transform="translate(4.000 0)">
+</style><g transform="translate(4.000 0)">
 <defs>
   <clipPath id="card1"><rect width="285.333" height="210" rx="14"/></clipPath>
   <clipPath id="slot1"><rect x="0" y="58" width="285.333" height="66"/></clipPath>

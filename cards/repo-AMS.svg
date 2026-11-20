@@ -28,7 +28,7 @@
 .sh{animation:sheen 5s ease-in-out infinite}
 .rg{opacity:0;transform-box:fill-box;transform-origin:center;animation:ring 1s ease-out both}
 @media (prefers-reduced-motion: reduce){.r,.f,.g,.p,.live,.n,.nu,.tw,.ti,.sl,.ai,.ro,.rg{animation:none!important;opacity:1!important;transform:none!important}.sh,.rg{display:none}}
-.r,.f,.g,.p,.live,.n,.nu,.tw,.ti,.sl,.ai,.ro{animation:none!important;opacity:1!important;transform:none!important}.sh,.rg{display:none}</style><g transform="translate(4.000 0)">
+</style><g transform="translate(4.000 0)">
 <rect width="285.333" height="150" rx="14" fill="#eeece6"/>
 <rect x=".5" y=".5" width="284.333" height="149" rx="14" fill="none" stroke="#d0cec6"/>
 <g class="r" style="animation-delay:4.72s">
