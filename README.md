@@ -36,10 +36,4 @@
   <a href="https://instagram.com/vb_nobody"><img src="https://img.shields.io/badge/Instagram-1c1c1f?style=flat-square&logo=instagram&logoColor=a78bfa" alt="Instagram" /></a>
 </p>
 
-<p align="center">
-  <sub>
-    Cards are generated as animated SVG by
-    <a href="./scripts/render_readme_cards.py">render_readme_cards.py</a> and refreshed daily by
-    <a href="./.github/workflows/readme-cards.yml">GitHub Actions</a>.
-  </sub>
-</p>
+
