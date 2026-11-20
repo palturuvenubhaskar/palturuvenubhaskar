@@ -86,7 +86,7 @@ def write_preview(lines):
     pad, title_h, status_h = 20, 30, 30
     art_h = ROWS * CELL_H
     cw, ch = ART_W + pad * 2, title_h + art_h + status_h + pad
-    bg, bg2, frame, dim, ink = "#0d1117", "#111722", "#30363d", "#7d8590", "#c9d1d9"
+    bg, bg2, frame, dim, ink = "#faf9f6", "#eeece6", "#d0cec6", "#6b7b8f", "#0b0f1a"
 
     parts = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{cw:.0f}" height="{ch:.0f}" '
@@ -97,7 +97,7 @@ def write_preview(lines):
         f'<rect x=".5" y=".5" width="{cw - 1:.0f}" height="{ch - 1:.0f}" rx="12" fill="none" stroke="{frame}"/>',
         f'<line x1="0" y1="{title_h}" x2="{cw:.0f}" y2="{title_h}" stroke="{frame}"/>',
     ]
-    for i, col in enumerate(["#ff5f56", "#ffbd2e", "#27c93f"]):
+    for i, col in enumerate(["#1e3a8a", "#b45309", "#5b21b6"]):
         parts.append(f'<circle cx="{pad + i * 16}" cy="{title_h / 2}" r="5" fill="{col}"/>')
     parts.append(
         f'<text x="{cw / 2:.0f}" y="{title_h / 2 + 4}" fill="{dim}" font-size="12" '

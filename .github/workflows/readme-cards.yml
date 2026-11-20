@@ -37,19 +37,19 @@ jobs:
           set -e
           mkdir -p fonts assets
           base="https://cdn.jsdelivr.net/npm"
-          curl -fsSL "$base/@fontsource/space-grotesk@5/files/space-grotesk-latin-700-normal.woff2" -o fonts/sg700.woff2
-          curl -fsSL "$base/@fontsource/space-grotesk@5/files/space-grotesk-latin-500-normal.woff2" -o fonts/sg500.woff2
-          curl -fsSL "$base/@fontsource/jetbrains-mono@5/files/jetbrains-mono-latin-400-normal.woff2" -o fonts/jbm400.woff2
+          curl -fsSL "$base/@fontsource/geist@5/files/geist-latin-600-normal.woff2" -o fonts/geist600.woff2
+          curl -fsSL "$base/@fontsource/geist@5/files/geist-latin-400-normal.woff2" -o fonts/geist400.woff2
+          curl -fsSL "$base/@fontsource/geist-mono@5/files/geist-mono-latin-400-normal.woff2" -o fonts/geistmono400.woff2
           curl -fsSL "$base/@fontsource/instrument-serif@5/files/instrument-serif-latin-400-normal.woff2" -o fonts/is400.woff2
           curl -fsSL "$base/@fontsource/instrument-serif@5/files/instrument-serif-latin-400-italic.woff2" -o fonts/is400i.woff2
 
-          for f in sg700 sg500 jbm400 is400 is400i; do
+          for f in geist600 geist400 geistmono400 is400 is400i; do
             pyftsubset "fonts/$f.woff2" \
               --output-file="fonts/sub-$f.woff2" \
               --unicodes="U+0020-007E,U+00B7,U+2192,U+2014,U+2022" \
               --flavor=woff2 --layout-features="kern,liga" --no-hinting
           done
-          rm -f fonts/sg700.woff2 fonts/sg500.woff2 fonts/jbm400.woff2 fonts/is400.woff2 fonts/is400i.woff2
+          rm -f fonts/geist600.woff2 fonts/geist400.woff2 fonts/geistmono400.woff2 fonts/is400.woff2 fonts/is400i.woff2
 
       - name: Fetch avatar
         run: curl -fsSL "https://github.com/${{ github.repository_owner }}.png?size=240" -o assets/avatar.png
