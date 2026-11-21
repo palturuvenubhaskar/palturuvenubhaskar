@@ -19,6 +19,7 @@ import json
 import os
 import sys
 
+import numpy as np
 from PIL import Image, ImageOps
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -40,28 +41,75 @@ GAMMA = float(os.environ.get("GAMMA", 1.0))
 FLOOR = float(os.environ.get("FLOOR", 0.13))   # luminance below this is background -> blank
 CONTRAST = float(os.environ.get("CONTRAST", 1.15))
 
-# square crop around the head (the art area is square too)
-CROP = (0.12, 0.10, 0.92, 0.90)
+# tight crop around the head + subject-normalised inverted luminance
+CROP = (0.20, 0.13, 0.88, 0.81)
+
+# percentile normalisation on foreground pixels only (keeps face, drops background)
+SUBJ_LO_P = 4     # lower percentile for foreground floor
+SUBJ_HI_P = 96    # upper percentile for foreground ceiling
+SUBJ_BLEND = 0.35 # 0 = fully normalised, 1 = raw luminance
+
+
+def _subject_norm(arr, mask, lo_p=4, hi_p=96, blend=0.0):
+    a = np.percentile(arr[mask], lo_p)
+    b = np.percentile(arr[mask], hi_p)
+    if b - a < 1e-3:
+        return arr
+    n = np.clip((arr - a) / (b - a), 0, 1)
+    return n if blend <= 0 else (n * (1 - blend) + arr * blend)
 
 
 def sample():
     im = Image.open(SRC).convert("L")
     w, h = im.size
     im = im.crop((int(w * CROP[0]), int(h * CROP[1]), int(w * CROP[2]), int(h * CROP[3])))
-    im = ImageOps.autocontrast(im, cutoff=1)
     im = im.resize((COLS, ROWS), Image.LANCZOS)
-    px = im.load()
+    arr = np.asarray(im).astype(np.float32) / 255.0
 
+    # foreground mask from raw luminance (before normalisation)
+    mask = arr > 0.10
+    # keep largest blob to drop stray bright spots
+    from collections import deque
+    seen = np.zeros_like(mask, dtype=bool)
+    best = np.zeros_like(mask)
+    for sy in range(ROWS):
+        for sx in range(COLS):
+            if not mask[sy, sx] or seen[sy, sx]:
+                continue
+            q = deque([(sy, sx)])
+            seen[sy, sx] = True
+            cells = []
+            while q:
+                y, x = q.popleft()
+                cells.append((y, x))
+                for dy in (-1, 0, 1):
+                    for dx in (-1, 0, 1):
+                        ny, nx = y + dy, x + dx
+                        if 0 <= ny < ROWS and 0 <= nx < COLS and mask[ny, nx] and not seen[ny, nx]:
+                            seen[ny, nx] = True
+                            q.append((ny, nx))
+            if len(cells) > best.sum():
+                best = np.zeros_like(mask)
+                for y, x in cells:
+                    best[y, x] = True
+    mask = best
+
+    # percentile normalisation on subject only
+    arr = _subject_norm(arr, mask, SUBJ_LO_P, SUBJ_HI_P, SUBJ_BLEND)
+
+    # invert so dark face = dense chars on paper
     lines = []
     for y in range(ROWS):
         chars = []
         for x in range(COLS):
-            lum = pow(px[x, y] / 255.0, GAMMA) * CONTRAST
-            lum = min(1.0, lum)
-            if lum < FLOOR:
+            if not mask[y, x]:
                 chars.append(" ")
                 continue
-            idx = int(lum * (len(RAMP) - 1) + 0.5)
+            v = 1.0 - arr[y, x]
+            if v < FLOOR:
+                chars.append(" ")
+                continue
+            idx = int(v * (len(RAMP) - 1) + 0.5)
             chars.append(RAMP[max(0, min(len(RAMP) - 1, idx))])
         lines.append("".join(chars))
     return lines

@@ -28,7 +28,7 @@
 .sh{animation:sheen 5s ease-in-out infinite}
 .rg{opacity:0;transform-box:fill-box;transform-origin:center;animation:ring 1s ease-out both}
 @media (prefers-reduced-motion: reduce){.r,.f,.g,.p,.live,.n,.nu,.tw,.ti,.sl,.ai,.ro,.rg{animation:none!important;opacity:1!important;transform:none!important}.sh,.rg{display:none}}
-</style>
+.r,.f,.g,.p,.live,.n,.nu,.tw,.ti,.sl,.ai,.ro{animation:none!important;opacity:1!important;transform:none!important}.sh,.rg{display:none}</style>
 <rect width="880" height="340" rx="14" fill="#f3f3f1"/>
 <rect x=".5" y=".5" width="879" height="339" rx="14" fill="none" stroke="#dcdcd7"/>
 <text class="f" style="animation-delay:1.90s" x="40" y="58" font-family="'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" letter-spacing="2" fill="#6e6e73">THE LAST 12 MONTHS ON GITHUB</text>
