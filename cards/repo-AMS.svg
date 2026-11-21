@@ -29,12 +29,12 @@
 .rg{opacity:0;transform-box:fill-box;transform-origin:center;animation:ring 1s ease-out both}
 @media (prefers-reduced-motion: reduce){.r,.f,.g,.p,.live,.n,.nu,.tw,.ti,.sl,.ai,.ro,.rg{animation:none!important;opacity:1!important;transform:none!important}.sh,.rg{display:none}}
 </style><g transform="translate(4.000 0)">
-<rect width="285.333" height="150" rx="14" fill="#eeece6"/>
-<rect x=".5" y=".5" width="284.333" height="149" rx="14" fill="none" stroke="#d0cec6"/>
+<rect width="285.333" height="150" rx="14" fill="#f3f3f1"/>
+<rect x=".5" y=".5" width="284.333" height="149" rx="14" fill="none" stroke="#dcdcd7"/>
 <g class="r" style="animation-delay:4.72s">
   <rect x="24" y="30" width="8" height="8" rx="2" fill="#f1e05a"/>
-  <text x="40" y="39" font-family="'Geist', system-ui, -apple-system, sans-serif" font-weight="700" font-size="17" fill="#0b0f1a">AMS</text>
-  <text x="24" y="72" font-family="'Geist', system-ui, -apple-system, sans-serif" font-size="13.5" fill="#2d3a4f">JavaScript project</text>
-  <text x="24" y="128" font-family="'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#6b7b8f">JavaScript  &#183;  &#9733; 2</text>
+  <text x="40" y="39" font-family="'Geist', system-ui, -apple-system, sans-serif" font-weight="700" font-size="17" fill="#111111">AMS</text>
+  <text x="24" y="72" font-family="'Geist', system-ui, -apple-system, sans-serif" font-size="13.5" fill="#3a3a3c">JavaScript project</text>
+  <text x="24" y="128" font-family="'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#6e6e73">JavaScript  &#183;  &#9733; 2</text>
 </g>
 </g></svg>

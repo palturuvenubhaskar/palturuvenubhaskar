@@ -38,29 +38,29 @@
     <stop offset="1" stop-color="#fff" stop-opacity="0"/>
   </linearGradient>
   <linearGradient id="tint0" x1="0" y1="0" x2="1" y2="1">
-    <stop offset="0" stop-color="#1e3a8a" stop-opacity=".12"/>
-    <stop offset="1" stop-color="#1e3a8a" stop-opacity=".02"/>
+    <stop offset="0" stop-color="#2f55ff" stop-opacity=".16"/>
+    <stop offset="1" stop-color="#2f55ff" stop-opacity=".02"/>
   </linearGradient>
 </defs>
 <g class="ti" style="animation-delay:3.10s">
   <g clip-path="url(#card0)">
-    <rect width="285.333" height="210" fill="#eeece6"/>
+    <rect width="285.333" height="210" fill="#f3f3f1"/>
     <rect width="285.333" height="210" fill="url(#tint0)"/>
-    <rect x="0" y="0" width="285.333" height="2.5" fill="#1e3a8a" fill-opacity=".9"/>
+    <rect x="0" y="0" width="285.333" height="2.5" fill="#2f55ff" fill-opacity=".9"/>
     <circle class="rg" style="animation-delay:3.60s" cx="251" cy="180" r="52"
-            fill="none" stroke="#1e3a8a" stroke-opacity=".35" stroke-width="1.6"/>
+            fill="none" stroke="#2f55ff" stroke-opacity=".35" stroke-width="1.6"/>
     <rect class="sh" style="animation-delay:4.50s" x="0" y="-20" width="80"
           height="250" fill="url(#gl0)" transform="translate(-260 0)"/>
   </g>
-  <rect x=".5" y=".5" width="284.333" height="209" rx="14" fill="none" stroke="#d0cec6"/>
+  <rect x=".5" y=".5" width="284.333" height="209" rx="14" fill="none" stroke="#dcdcd7"/>
   <text class="sl" style="animation-delay:3.45s" x="24" y="38" font-family="'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11"
-        letter-spacing="1.6" fill="#1e3a8a">AI ORCHESTRATION</text>
+        letter-spacing="1.6" fill="#2f55ff">AI ORCHESTRATION</text>
   <g class="ai" style="animation-delay:3.60s"><text class="n" style="animation-delay:4.40s"
-     x="245" y="38" font-family="'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" fill="#1e3a8a">&#8594;</text></g>
+     x="245" y="38" font-family="'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" fill="#2f55ff">&#8594;</text></g>
   <g clip-path="url(#slot0)"><g class="ro" style="animation-delay:3.55s">
-    <text x="20" y="108" font-family="'Instrument Serif', Georgia, serif" font-size="46" fill="#1e3a8a">01
-      <tspan font-style="italic" font-size="26" fill="#2d3a4f"> world</tspan></text>
+    <text x="20" y="108" font-family="'Instrument Serif', Georgia, serif" font-size="46" fill="#2f55ff">01
+      <tspan font-style="italic" font-size="26" fill="#3a3a3c"> world</tspan></text>
   </g></g>
-  <text class="r" style="animation-delay:3.85s" x="24" y="152" font-family="'Geist', system-ui, -apple-system, sans-serif" font-size="13.5" fill="#2d3a4f">Multi-agent systems, MCP tooling</text><text class="r" style="animation-delay:3.95s" x="24" y="172" font-family="'Geist', system-ui, -apple-system, sans-serif" font-size="13.5" fill="#2d3a4f">and autonomous workflows.</text>
+  <text class="r" style="animation-delay:3.85s" x="24" y="152" font-family="'Geist', system-ui, -apple-system, sans-serif" font-size="13.5" fill="#3a3a3c">Multi-agent systems, MCP tooling</text><text class="r" style="animation-delay:3.95s" x="24" y="172" font-family="'Geist', system-ui, -apple-system, sans-serif" font-size="13.5" fill="#3a3a3c">and autonomous workflows.</text>
 </g>
 </svg>

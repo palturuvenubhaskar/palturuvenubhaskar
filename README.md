@@ -7,7 +7,7 @@
 <img src="./cards/heatmap.svg" width="100%" alt="Contribution graph for the last year, in blue, refreshed daily" /><br>
 <img src="./cards/activity.svg" width="100%" alt="Contributions in the last 12 months by month, with streak and busiest day" /><br>
 <a href="https://github.com/palturuvenubhaskar?tab=repositories"><img src="./cards/tile-ai.svg" width="33.333%" alt="AI ORCHESTRATION: multi-agent systems, MCP tooling and autonomous workflows" /></a><a href="https://github.com/palturuvenubhaskar?tab=repositories"><img src="./cards/tile-game.svg" width="33.333%" alt="GAME DEV: AI-driven worlds, procedural generation and LLM NPCs" /></a><a href="https://github.com/palturuvenubhaskar?tab=repositories"><img src="./cards/tile-space.svg" width="33.333%" alt="SPACE TECH: cosmic simulations, astronomy data and visualisation" /></a><br>
-<img src="./cards/title-coding.svg" width="100%" alt="What I'm building" /><br>
+<picture><source media="(prefers-color-scheme: dark)" srcset="./cards/title-coding-dark.svg"><img src="./cards/title-coding-light.svg" width="100%" alt="What I'm building" /></picture><br>
 <a href="https://github.com/palturuvenubhaskar/StudyMapper"><img src="./cards/repo-StudyMapper.svg" width="33.333%" alt="StudyMapper: AI study companion" /></a><a href="https://github.com/palturuvenubhaskar/AMS"><img src="./cards/repo-AMS.svg" width="33.333%" alt="AMS: JavaScript project" /></a><a href="https://github.com/palturuvenubhaskar/FINTRACK"><img src="./cards/repo-FINTRACK.svg" width="33.333%" alt="FINTRACK: TypeScript project" /></a>
 </div>
 

@@ -39,16 +39,18 @@ FONTS = os.path.join(ROOT, "fonts")
 USERNAME = "palturuvenubhaskar"
 STATIC = bool(os.environ.get("STATIC"))
 
-# ---- palette (light paper/ink, space-themed) ---------------------------------
-PAPER = "#faf9f6"
-PAPER_DEEP = "#eeece6"
-INK = "#0b0f1a"
-INK_SOFT = "#2d3a4f"
-MUTED = "#6b7b8f"
-RULE = "#d0cec6"
-TECH = "#1e3a8a"      # AI orchestration — deep space blue
-STUDIO = "#b45309"    # game dev — nebula amber
-LEARN = "#5b21b6"     # space tech — cosmic violet
+# ---- palette (reference paper/ink tokens, space-themed worlds) ----------------
+PAPER = "#f3f3f1"
+PAPER_DEEP = "#e2e2de"
+INK = "#111111"
+INK_SOFT = "#3a3a3c"
+MUTED = "#6e6e73"
+RULE = "#dcdcd7"
+TECH = "#2f55ff"      # AI orchestration — deep space blue
+STUDIO = "#ef3b2d"    # game dev — nebula red
+LEARN = "#7c3aed"     # space tech — cosmic violet
+# small text needs AA contrast on paper; STUDIO is 3.5:1 so labels use a darker red
+STUDIO_TEXT = "#c8281b"
 W = 880               # full card width, GitHub's README column at 100%
 
 SERIF = "'Instrument Serif', Georgia, serif"
@@ -206,7 +208,7 @@ def hero(contrib):
         y = i * cell_h + cell_h * 0.74
         delay = 0.25 + i * row_dur
         text = (
-            f'<text xml:space="preserve" x="0" y="{y:.1f}" fill="{INK}" fill-opacity=".85" '
+            f'<text xml:space="preserve" x="0" y="{y:.1f}" fill="{INK}" fill-opacity="1" '
             f'font-size="{cell_h * 0.86:.1f}" textLength="{art_w:.0f}" '
             f'lengthAdjust="spacing">{escape(line)}</text>'
         )
@@ -269,7 +271,7 @@ def hero(contrib):
     <rect x="{art_x}" y="{art_top}" width="{art_w * scale:.0f}" height="{art_w * scale:.0f}" fill="url(#pfy)"/>
   </mask>
 </defs>
-<rect width="{W}" height="{h}" rx="14" fill="{PAPER_DEEP}"/>
+<rect width="{W}" height="{h}" rx="14" fill="{PAPER}"/>
 <rect width="{W}" height="{h}" rx="14" fill="url(#glow)"/>
 <rect x=".5" y=".5" width="{W - 1}" height="{h - 1}" rx="14" fill="none" stroke="{RULE}"/>
 {stars()}
@@ -301,6 +303,7 @@ TILE_W, TILE_H = W / 3 - 8, 210
 
 def tile(name, label, color, num, word, blurb, delay, pos):
     lines = wrap(blurb, 34)
+    label_color = STUDIO_TEXT if color == STUDIO else color
     blurb_svg = "".join(
         f'<text class="r" {d(delay + 0.75 + i * 0.1)} x="24" y="{152 + i * 20}" '
         f'font-family="{SANS}" font-size="13.5" fill="{INK_SOFT}">{escape(l)}</text>'
@@ -316,13 +319,13 @@ def tile(name, label, color, num, word, blurb, delay, pos):
     <stop offset="1" stop-color="#fff" stop-opacity="0"/>
   </linearGradient>
   <linearGradient id="tint{pos}" x1="0" y1="0" x2="1" y2="1">
-    <stop offset="0" stop-color="{color}" stop-opacity=".12"/>
+    <stop offset="0" stop-color="{color}" stop-opacity=".16"/>
     <stop offset="1" stop-color="{color}" stop-opacity=".02"/>
   </linearGradient>
 </defs>
 <g class="ti" {d(delay)}>
   <g clip-path="url(#card{pos})">
-    <rect width="{TILE_W:.3f}" height="{TILE_H}" fill="{PAPER_DEEP}"/>
+    <rect width="{TILE_W:.3f}" height="{TILE_H}" fill="{PAPER}"/>
     <rect width="{TILE_W:.3f}" height="{TILE_H}" fill="url(#tint{pos})"/>
     <rect x="0" y="0" width="{TILE_W:.3f}" height="2.5" fill="{color}" fill-opacity=".9"/>
     <circle class="rg" {d(delay + 0.5)} cx="{TILE_W - 34:.0f}" cy="{TILE_H - 30}" r="52"
@@ -332,9 +335,9 @@ def tile(name, label, color, num, word, blurb, delay, pos):
   </g>
   <rect x=".5" y=".5" width="{TILE_W - 1:.3f}" height="{TILE_H - 1}" rx="14" fill="none" stroke="{RULE}"/>
   <text class="sl" {d(delay + 0.35)} x="24" y="38" font-family="{MONO}" font-size="11"
-        letter-spacing="1.6" fill="{color}">{label}</text>
+        letter-spacing="1.6" fill="{label_color}">{label}</text>
   <g class="ai" {d(delay + 0.5)}><text class="n" style="animation-delay:{delay + 1.3:.2f}s"
-     x="{TILE_W - 40:.0f}" y="38" font-family="{MONO}" font-size="14" fill="{color}">&#8594;</text></g>
+     x="{TILE_W - 40:.0f}" y="38" font-family="{MONO}" font-size="14" fill="{label_color}">&#8594;</text></g>
   <g clip-path="url(#slot{pos})"><g class="ro" {d(delay + 0.45)}>
     <text x="20" y="108" font-family="{SERIF}" font-size="46" fill="{color}">{num}
       <tspan font-style="italic" font-size="26" fill="{INK_SOFT}"> {escape(word)}</tspan></text>
@@ -367,7 +370,7 @@ def activity(contrib):
         label = datetime.date.fromisoformat(m["month"] + "-01").strftime("%b")
         if m["total"] > 0:
             bh = max(4, round(m["total"] / top * maxh))
-            fill = TECH if is_best else (MUTED if partial else "#9db0c8")
+            fill = TECH if is_best else ("#c9c9c4" if partial else INK_SOFT)
             bars.append(
                 f'<rect class="g" style="animation-delay:{delay:.2f}s" x="{x:.1f}" '
                 f'y="{base - bh}" width="{bw:.1f}" height="{bh}" rx="3" fill="{fill}">'
@@ -407,7 +410,7 @@ def activity(contrib):
             side.append(f'<rect class="f" {d(2.6)} x="648" y="{y + 38}" width="188" height="1" fill="{RULE}"/>')
 
     body = f"""
-<rect width="{W}" height="{h}" rx="14" fill="{PAPER_DEEP}"/>
+<rect width="{W}" height="{h}" rx="14" fill="{PAPER}"/>
 <rect x=".5" y=".5" width="{W - 1}" height="{h - 1}" rx="14" fill="none" stroke="{RULE}"/>
 <text class="f" {d(1.9)} x="40" y="58" font-family="{MONO}" font-size="11" letter-spacing="2" fill="{MUTED}">THE LAST 12 MONTHS ON GITHUB</text>
 <text class="r" {d(2.0)} x="38" y="118" font-family="{SERIF}" font-size="52" fill="{INK}">{contrib["total_contributions"]:,} <tspan font-style="italic" fill="{TECH}">contributions</tspan></text>
@@ -430,7 +433,7 @@ def repo_card(i, repo):
     delay = 4.6 + i * 0.12
     meta = f'{repo["lang"] or "Code"}  &#183;  &#9733; {repo["stars"]}'
     body = f"""
-<rect width="{REPO_W:.3f}" height="{REPO_H}" rx="14" fill="{PAPER_DEEP}"/>
+<rect width="{REPO_W:.3f}" height="{REPO_H}" rx="14" fill="{PAPER}"/>
 <rect x=".5" y=".5" width="{REPO_W - 1:.3f}" height="{REPO_H - 1}" rx="14" fill="none" stroke="{RULE}"/>
 <g class="r" {d(delay)}>
   <rect x="24" y="30" width="8" height="8" rx="2" fill="{repo['color']}"/>
@@ -447,17 +450,22 @@ def repo_card(i, repo):
 
 
 # ---- 5 · section title --------------------------------------------------------
+# Transparent card: dark ink for light mode, light ink for dark mode. The README
+# picks one with <picture><source media="(prefers-color-scheme: dark)">.
 def section_title(text, italic):
-    body = (
-        f'<text class="r" {d(4.4)} x="2" y="46" font-family="{SERIF}" font-size="34" fill="{INK}">'
-        f'{escape(text)} <tspan font-style="italic" fill="{TECH}">{escape(italic)}</tspan></text>'
-    )
-    write("title-coding.svg", svg(W, 64, body, ["serif", "serif-i"], f"{text} {italic}", bottom=0))
+    for theme, fg, accent in (("light", INK, TECH), ("dark", "#e6edf3", "#7f9bff")):
+        body = (
+            f'<text class="r" {d(4.4)} x="2" y="46" font-family="{SERIF}" font-size="34" fill="{fg}">'
+            f'{escape(text)} <tspan font-style="italic" fill="{accent}">{escape(italic)}</tspan></text>'
+        )
+        write(
+            f"title-coding-{theme}.svg",
+            svg(W, 64, body, ["serif", "serif-i"], f"{text} {italic}", bottom=0),
+        )
 
 
 # ---- 6 · contribution graph ---------------------------------------------------
-# Light theme: paper → deep space blue
-BLUE = ["#eef0f5", "#c8d0e8", "#9db0d8", "#6b8fc8", TECH, "#2d4a8a"]
+BLUE = [PAPER_DEEP, "#c8d3ff", "#94a8ff", "#6280ff", TECH, "#1a3be0"]
 
 
 def level_for(c):
@@ -504,7 +512,7 @@ def heatmap(contrib):
     )
     h = gy + 7 * step + 44
     body = f"""
-<rect width="{W}" height="{h}" rx="14" fill="{PAPER_DEEP}"/>
+<rect width="{W}" height="{h}" rx="14" fill="{PAPER}"/>
 <rect x=".5" y=".5" width="{W - 1}" height="{h - 1}" rx="14" fill="none" stroke="{RULE}"/>
 <text class="r" {d(0.8)} x="42" y="62" font-family="{SERIF}" font-size="34" fill="{INK}">Every day, <tspan font-style="italic" fill="{TECH}">in blue</tspan></text>
 {legend}
